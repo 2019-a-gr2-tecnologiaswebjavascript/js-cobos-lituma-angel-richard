@@ -3,4 +3,15 @@
 <p>Nombre: {{nombreItem}}</p>
 <!--event binding-->
 <!--en angular los eventos onclick y onblur se pueden escribir sin el ON-->
-  <button (blur) = "alertarBlur()" (click) = "alertar()"> {{textoBoton}}</button>
+  <button (click) = "alertar()"> {{textoBoton}}</button>
+
+  <!--PROPERTY BINDING-->
+  <img [src]="url" alt="" 
+  (click) = "cambiarImagen()"
+  >
+
+
+  <!--Directiva ->*ngfor ->, es para iterar cierta etiqueta -->
+ <p *ngFor = "let nota of notas">
+   {{nota}}
+ </p>
