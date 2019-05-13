@@ -1,5 +1,6 @@
 <h1 class = "rojo"> Item galeria - {{title}}</h1>
+<!--INTERPOLACION-->
 <p>Nombre: {{nombreItem}}</p>
 <!--event binding-->
- 
-  <button (click) = "alertar()"> {{textoBoton}}</button>
+<!--en angular los eventos onclick y onblur se pueden escribir sin el ON-->
+  <button (blur) = "alertarBlur()" (click) = "alertar()"> {{textoBoton}}</button>
