@@ -1,4 +1,11 @@
 <h1 [class] = "claseTitulo">Titulo {{title}}</h1>
+
+
+<!--// cuando se quiere ver variables en pantalla-->
+<pre>
+  {{_carritoService.carritoCompras | json}}  
+</pre>
+
 <button (click) = "mostrar(true)">Mostrar</button>
 <button (click) = "mostrar(false)">Ocultar</button>
 

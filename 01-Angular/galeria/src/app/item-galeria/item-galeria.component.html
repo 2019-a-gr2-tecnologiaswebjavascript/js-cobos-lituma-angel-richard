@@ -11,7 +11,10 @@
   >
 
 
+
   <!--Directiva ->*ngfor ->, es para iterar cierta etiqueta -->
- <p *ngFor = "let nota of notas">
-   {{nota}}
- </p>
+ <div *ngFor = "let nota of notas">
+   <button (click) = "agregarCarrito(nota)">
+   Anadir: {{nota}}
+  </button>
+  </div>

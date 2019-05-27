@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
+import { CarritoService } from '../servicios/carrito/carrito.service';
+
 
 
 @Component({
@@ -26,8 +28,14 @@ export class ItemGaleriaComponent implements OnInit, OnDestroy {
   url = "http://www.dna-autoparts.com/23121-thickbox_default/bielas-forjadas-eagle-para-sr20det.jpg";
   notas = [1,2,3,4,5,6,7,8,9,10];
 
+  // ayuda a hacer el dependency injection, Inyeccion de dependencias
+  // se inyectan las depencias en el constructor.
+  // las dependecias de un componente son los servicios, estos servicios son compartidos y se pueden compartir
+  // un servicio en varios componentes o en varios servicios
+  constructor(private readonly _carritoService:CarritoService)
+   {
 
-  constructor() { }
+   }
 
 
 
@@ -57,11 +65,26 @@ cambiarImagen(){
 
 
 ngOnInit() {
-  console.log('Empezo')
+  console.log("'Empezo'")
+  console.log(this._carritoService.carritoCompras);
 }
 ngOnDestroy(){
   console.log('Termino')
 }
+
+agregarCarrito (valorCarrito:number)
+{
+  //this._carritoService.carritoCompras.push(valorCarrito); menos comun
+  const itemCarrito = {
+    valor:valorCarrito,
+    nombreTienda:this.titulo
+  };
+  this._carritoService.carritoCompras.splice(0, 0, itemCarrito);
+  console.log(this._carritoService.carritoCompras);
+
+
+}
+
 }
 
 
