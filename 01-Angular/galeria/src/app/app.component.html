@@ -1,14 +1,26 @@
-<h1 class = "rojo">Titulo {{title}}</h1>
+<h1 [class] = "claseTitulo">Titulo {{title}}</h1>
+<button (click) = "mostrar(true)">Mostrar</button>
+<button (click) = "mostrar(false)">Ocultar</button>
+
 <!--{{interpolacion}}-->
 <!--sino no lo reconoce como variable [nombreItem] = "flor.nombre" -->
-<app-item-galeria 
-*ngFor= "let flor of arregloFloresJs"
-[nombreItem] = "flor.nombre" 
-[textoBoton] = "flor.descripcion"
-(cambioChela) = "cambioChela($event)"
-(cambioCerveza) = "cambioCerveza($event)"
->
-</app-item-galeria>
+
+  <!--directivas *ngIf, *ngFor-->
+  <div  *ngIf = "estaMostrando">
+    <app-item-galeria 
+
+    *ngFor= "let flor of arregloFloresJs"
+    [titulo] = "flor.titulo "
+    [nombreItem] = "flor.nombre" 
+    [textoBoton] = "flor.descripcion"
+    (cambioChela) = "cambioChela($event)"
+    (cambioCerveza) = "cambioCerveza($event)">
+
+    
+  </app-item-galeria>
+</div>
+
+
 
 
 <!--Ahora vamos a Iterar con el *ngFor-->
