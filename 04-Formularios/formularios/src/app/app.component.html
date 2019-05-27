@@ -1,0 +1,80 @@
+Nombre: {{nombre}}
+<br>
+Apellido: {{apellido}}
+<br>
+Consulta: {{q}}
+<br>
+
+<pre>ERROR: {{vtNombre.errors | json}} </pre>
+
+<pre>Valido:{{vtNombre.valid}}</pre>
+<pre>Invalido:{{vtNombre.Invalid}}</pre>
+
+<pre>Dirty:{{formularioUsuario.Dirty}}</pre>
+<pre>Pristine:{{formularioUsuario.Pristine}}</pre>
+<pre>Touched:{{formularioUsuario.Touched}}</pre>
+<pre>Untouched:{{formularioUsuario.Untouched}}</pre>
+
+<form 
+  #formularioUsuario  = "ngForm"
+  novalidate
+  (submit) = "guardarUsuario(formularioUsuario)"
+>
+  <label for="nombre">Nombre</label>
+  <!--two way data binding de la caja en la banana , VER NUEVA FUNCION MUSTMATCH-->
+  <input id = "nombre" required 
+
+  name= "nombreUsuario" 
+  [(ngModel)]="nombre"
+  #vtNombre = "ngModel"
+
+  cedula = "cedulaUsuario"
+  pattern="([A/Z])\w+"
+  [(ngModel)]="cedula"
+  #vtCedula = "ngModel"
+  >
+
+
+  <pre>{{vtNombre.valid | json}}</pre>
+
+
+  <div *ngIf = "vtCedula.errors && vtCedula.Dirty">
+  <h1>Errores</h1>
+  <p>Existe un errir</p>
+  <p *ngIf = "vtCedula.errors.minlength">Escriba minimo 10 caracteres</p>
+  <p *ngIf = "vtCedula.errors.pattern">Solo se aceptan numeros</p>
+  <p *ngIf = "vtCedula.errors.required">Este campo es obligatorio</p>
+  </div>
+
+  <pre>{{vtCedula.errors  | json}}</pre>
+
+  <p *ngIf = "vtNombre.valid" >Nombre Valido </p>
+  <p *ngIf = "vtNombre.Invalid"> Nombre Invalido</p>
+
+
+
+  <label for="apellido">Apellido</label>
+  <input id = "apellido" name= "apellidoUsuario" type="text" [(ngModel)]="apellido">
+
+  <label for="cedula">Cedula</label>
+  <input id = "cedula" 
+  minlength="10"
+  maxlength="10"
+  pattern="[0-9]"
+  
+  name= "cedulaUsuario" type="text" [(ngModel)]="cedula">
+
+  <br>
+  <button type = "button">Tipo Boton</button>
+  <br>
+  <button type = "reset">Tipo Reset</button>
+  <br>
+  <button type = "submit" [disabled] = "formularioUsuario.Invalid">Tipo submit</button>
+
+  <button>Ir a google</button>
+
+
+  
+</form>
+
+          
