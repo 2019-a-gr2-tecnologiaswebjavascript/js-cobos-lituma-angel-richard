@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
 import { CarritoService } from '../servicios/carrito/carrito.service';
-
+import {ItemCarritoCompras} from '..//interfaces/item-carrito-compras';
 
 
 @Component({
@@ -26,7 +26,9 @@ export class ItemGaleriaComponent implements OnInit, OnDestroy {
   cambioCerveza:EventEmitter<boolean> = new EventEmitter()
 
   url = "http://www.dna-autoparts.com/23121-thickbox_default/bielas-forjadas-eagle-para-sr20det.jpg";
-  notas = [1,2,3,4,5,6,7,8,9,10];
+
+  @Input()
+  notas;
 
   // ayuda a hacer el dependency injection, Inyeccion de dependencias
   // se inyectan las depencias en el constructor.
@@ -36,9 +38,6 @@ export class ItemGaleriaComponent implements OnInit, OnDestroy {
    {
 
    }
-
-
-
   alertar(){
     alert('auxilio me desmayo: ' + this.nombreItem);
   }
@@ -72,20 +71,23 @@ ngOnDestroy(){
   console.log('Termino')
 }
 
-agregarCarrito (valorCarrito:number)
+agregarCarrito (valorCarrito)
 {
-  //this._carritoService.carritoCompras.push(valorCarrito); menos comun
-  const itemCarrito = {
+  //this._carritoService.carritoCompras.push(valorCarrito); mas comun
+  const itemCarrito:ItemCarritoCompras = {
     valor:valorCarrito,
-    nombreTienda:this.titulo
+    nombreTienda:this.titulo,
+    fechaCompra:new Date()
+    
   };
-  this._carritoService.carritoCompras.splice(0, 0, itemCarrito);
-  console.log(this._carritoService.carritoCompras);
+  const respuestaCarrito = this._carritoService.agregarCarritoDeCompras(itemCarrito);
+  console.log(respuestaCarrito);
+}
 
 
 }
 
-}
+
 
 
 

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rutas';
-  rutaHome = ['/home','app']
-  rutaCreditos = ['/creditos'];
+
+  rutaHome = ['/home','app'];
+  rutaCreditos = ['/creditos', '1', 12.01];
 }
