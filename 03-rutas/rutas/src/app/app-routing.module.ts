@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RutaHomeComponent } from './rutas/ruta-home/ruta-home.component';
 import { RutaCreditosComponent } from './rutas/ruta-creditos/ruta-creditos.component';
@@ -6,34 +6,50 @@ import { RutaProductosComponent } from './rutas/ruta-productos/ruta-productos.co
 import { RutaNoEncontradaComponent } from './rutas/ruta-no-encontrada/ruta-no-encontrada.component';
 import { RutaProductosHogarComponent } from './rutas/ruta-productos-hogar/ruta-productos-hogar.component';
 import { RutaProductosVideojuegosComponent } from './rutas/ruta-productos-videojuegos/ruta-productos-videojuegos.component';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
+import { EstaLogueadoService } from './servicios/guards/esta-logueado.service';
 
 const routes: Routes = [
   {
-    path: 'home/app',
-    component: RutaHomeComponent
+    path:'home/app',
+    component:RutaHomeComponent
   },
   {
-    path: 'creditos',
-    component: RutaCreditosComponent
+    path:'creditos/:idCredito/:tasaReferencia',
+    component:RutaCreditosComponent,
+    canActivate:[
+      EstaLogueadoService
+    ],
   },
   {
-    path: 'productos',
-    component: RutaProductosComponent, 
+    path:'productos',
+    component:RutaProductosComponent,
     children:[
       {
-        path:'hogar', 
-        component:RutaProductosHogarComponent 
-      },  
+        path:'hogar',
+        component:RutaProductosHogarComponent
+      },
       {
         path:'videojuegos',
         component:RutaProductosVideojuegosComponent
-      },
+      },     
     ]
+
   },
   {
-    path: 'no-encontrada',
-    component: RutaNoEncontradaComponent
+    path:'no-encontrada',
+    component:RutaNoEncontradaComponent
+  },
+  {
+    path:'',
+    redirectTo:'/home/app',
+    pathMatch:'full'
+  },
+  {
+    path:'**',
+    component:RutaNoEncontradaComponent
   }
+
 ];
 
 @NgModule({

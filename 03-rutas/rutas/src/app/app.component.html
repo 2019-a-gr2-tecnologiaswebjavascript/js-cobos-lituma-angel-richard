@@ -1,14 +1,21 @@
+<ul>
+  <li>
+    <a [routerLink] = "rutaHome">Home</a>
+  </li>
+  <li>
+    <a [routerLink] = "rutaCreditos">Creditos</a>
+  </li>
+  <li>
+    <a routerLink = "/productos">Productos</a>
+  </li>
+  <li>
+    <a routerLink = "/no-encontrada">No-encontrada</a>
+  </li>
+</ul>
 
-
+<!--SIEMPRE SE DEBE PONER ESTO EN EL HTML-->
+<router-outlet> </router-outlet>  
 <!--The content below is only a placeholder and can be replaced.-->
-
-
-  <ul><li><a [routerLink] = "rutaHome">Home</a></li></ul>
-  <ul><li><a [routerLink] = "rutaCreditos">Creditos</a></li></ul>
-  <ul><li></li><a routerLink = "/productos">Productos</a></li></ul>
-  <ul><li><a routerLink = "/no-encontrada">No encontrada</a></li></ul>
-
-<router-outlet></router-outlet>
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!

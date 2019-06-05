@@ -1,7 +1,35 @@
+
+<div class="contenedor">
+  <div class="row">
+    <!--col-tamanio-valor-->
+     <!--tamanio sm, md, lg-->
+     <!--valor 1,2,3,4,5,6,7,8,9-->
+     <!--col-md-6-->
+     <!--col-lg-3-->
+    <div class="col-md-3">
+      TITULO
+    </div>
+    <div class="col-md-6" >
+      <span class = "item-menu">Menu</span>
+      <span class = "item-menu">Inicio</span>
+      <span class = "item-menu">Tienda</span>
+      <span class = "item-menu">Peliculas</span>
+      <span class = "item-menu">Dc</span>
+      <span class = "item-menu">Marvel</span>
+    </div>
+    <div class="col-md-3">
+      LOGIN
+    </div>
+  </div> 
+</div>
+
+
+
+
+<!--
 <h1 [class] = "claseTitulo">Titulo {{title}}</h1>
 
-
-<!--// cuando se quiere ver variables en pantalla-->
+// cuando se quiere ver variables en pantalla
 <pre>
   {{_carritoService.carritoCompras | json}}  
 </pre>
@@ -9,16 +37,17 @@
 <button (click) = "mostrar(true)">Mostrar</button>
 <button (click) = "mostrar(false)">Ocultar</button>
 
-<!--{{interpolacion}}-->
-<!--sino no lo reconoce como variable [nombreItem] = "flor.nombre" -->
+{{interpolacion}}
+sino no lo reconoce como variable [nombreItem] = "flor.nombre" 
 
-  <!--directivas *ngIf, *ngFor-->
+  directivas *ngIf, *ngFor
   <div  *ngIf = "estaMostrando">
     <app-item-galeria 
 
     *ngFor= "let flor of arregloFloresJs"
     [titulo] = "flor.titulo "
     [nombreItem] = "flor.nombre" 
+    [notas] = "flor.notas"
     [textoBoton] = "flor.descripcion"
     (cambioChela) = "cambioChela($event)"
     (cambioCerveza) = "cambioCerveza($event)">
@@ -27,6 +56,7 @@
   </app-item-galeria>
 </div>
 
+-->
 
 
 
@@ -42,4 +72,4 @@
 textoBoton = "Cheveres"
 >
 
-</app-item-galeria> -->
+</app-item-galeria> -->  -->
